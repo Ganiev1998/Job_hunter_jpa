@@ -23,11 +23,11 @@ public class PermissionController {
         return service.getById(id);
     }
     @PostMapping
-    public PermissionDTO create(@RequestBody Permission permission){
+    public PermissionDTO create(@RequestBody PermissionDTO permission){
         return service.create(permission);
     }
     @PutMapping("/{id}")
-    public PermissionDTO update(@PathVariable Integer id, @RequestBody Permission permission){
+    public PermissionDTO update(@PathVariable Integer id, @RequestBody PermissionDTO permission){
         return service.update(id,permission);
     }
     @DeleteMapping("/{id}")

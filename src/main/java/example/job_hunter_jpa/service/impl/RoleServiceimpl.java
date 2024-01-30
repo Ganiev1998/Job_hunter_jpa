@@ -1,11 +1,9 @@
 package example.job_hunter_jpa.service.impl;
-
 import example.job_hunter_jpa.dto.roleDTO.RoleDTO;
 import example.job_hunter_jpa.dto.roleDTO.RoleResDTO;
 import example.job_hunter_jpa.entity.Role;
-import example.job_hunter_jpa.mapper.impl.PermissionMapper;
-import example.job_hunter_jpa.mapper.impl.RoleMapper;
-import example.job_hunter_jpa.mapper.impl.RoleResMapper;
+import example.job_hunter_jpa.mapper.impl.PermissionMap;
+import example.job_hunter_jpa.mapper.impl.RoleMap;
 import example.job_hunter_jpa.repository.PermissionRepository;
 import example.job_hunter_jpa.repository.RoleRepository;
 import example.job_hunter_jpa.service.RoleService;
@@ -17,9 +15,9 @@ import java.util.List;
 @Service
 public class RoleServiceimpl implements RoleService {
     private final RoleRepository repository;
-    private final RoleResMapper mapper;
+    private final RoleMap mapper;
     private final PermissionRepository p_repository;
-    private final PermissionMapper p_mapper;
+    private final PermissionMap p_mapper;
     @Override
     public RoleResDTO getById(Integer id) {
         return mapper.toDTO(repository.getReferenceById(id));

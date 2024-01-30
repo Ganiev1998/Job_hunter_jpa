@@ -1,5 +1,6 @@
 package example.job_hunter_jpa.controller;
 
+import example.job_hunter_jpa.dto.userDTO.UserDTO;
 import example.job_hunter_jpa.dto.userDTO.UserResDTO;
 import example.job_hunter_jpa.entity.Users;
 import example.job_hunter_jpa.service.UserService;
@@ -22,11 +23,11 @@ public class UserController {
         return service.getById(id);
     }
     @PostMapping
-    public UserResDTO create(@RequestBody Users user){
+    public UserResDTO create(@RequestBody UserDTO user){
         return service.create(user);
     }
     @PutMapping("/{id}")
-    public UserResDTO update(@PathVariable Integer id,@RequestBody Users user){
+    public UserResDTO update(@PathVariable Integer id,@RequestBody UserDTO user){
         return service.update(id,user);
     }
     @DeleteMapping("/{id}")

@@ -16,5 +16,5 @@ import java.util.Set;
 public class RoleResDTO {
     private Integer id;
     private String name;
-    private Set<PermissionResDTO> permissions;
+    private Set<Permission> permission;
 }
