@@ -29,15 +29,15 @@ public class RoleServiceimpl implements RoleService {
     }
 
     @Override
-    public RoleResDTO create(Role role) {
-        return mapper.toDTO(repository.save(role));
+    public RoleResDTO create(RoleDTO role) {
+        return mapper.toDTO(repository.save(mapper.toENT(role)));
     }
 
     @Override
-    public RoleResDTO update(Integer id, Role role) {
+    public RoleResDTO update(Integer id, RoleDTO role) {
         Role role1 = repository.getReferenceById(id);
         role1.setName(role.getName());
-        role1.setPermissions(role.getPermissions());
+        role1.setPermissions(role.getPermission());
         return mapper.toDTO(repository.save(role1));
     }
 

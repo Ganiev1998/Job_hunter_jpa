@@ -13,13 +13,13 @@ import java.util.stream.Collectors;
 
 @Data
 @Component
-public class UserMap implements Mapper<UserResDTO, Users> {
+public class UserMap implements Mapper<UserResDTO,Users,UserDTO> {
     private final RoleMap roleMapper;
 
-    public Users toENT1(UserDTO e){
-        return Users.builder().id(e.getId()).userName(e.getUserName()).password(e.getPassword())
-                .role((e.getRole())).build();
-    }
+//    public Users toENT(UserDTO e){
+//        return Users.builder().userName(e.getUserName()).password(e.getPassword())
+//                .role(roleMapper.toENT(e.getRole())).build();
+//    }
     @Override
     public UserResDTO toDTO(Users users) {
         return UserResDTO.builder().id(users.getId()).userName(users.getUserName())
@@ -28,9 +28,9 @@ public class UserMap implements Mapper<UserResDTO, Users> {
     }
 
     @Override
-    public Users toENT(UserResDTO e) {
-        return Users.builder().id(e.getId()).userName(e.getUserName()).password(e.getPassword())
-                .role(roleMapper.toENT(e.getRoleResDTO())).build();
+    public Users toENT(UserDTO e) {
+        return Users.builder().userName(e.getUserName()).password(e.getPassword())
+                .role(roleMapper.toENT(e.getRole())).build();
     }
 
     @Override

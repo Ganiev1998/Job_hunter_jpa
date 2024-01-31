@@ -11,23 +11,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 @Component
 @Data
-public class RoleMap implements Mapper<RoleResDTO,Role> {
+public class RoleMap implements Mapper<RoleResDTO,Role,RoleDTO> {
     @Override
     public RoleResDTO toDTO(Role role) {
         return RoleResDTO.builder().id(role.getId()).name(role.getName()).permission(role.getPermissions()).build();
     }
 
     @Override
-    public Role toENT(RoleResDTO e) {
+    public Role toENT(RoleDTO e) {
         return null;
     }
 
     @Override
     public List<RoleResDTO> toDTOs(List<Role> roles) {
         return roles.stream().map(this::toDTO).collect(Collectors.toList());
-    }
-    public Role ToENT(RoleDTO roleDTO){
-        return Role.builder().name(roleDTO.getName())
-                .permissions(roleDTO.getPermission()).build();
     }
 }

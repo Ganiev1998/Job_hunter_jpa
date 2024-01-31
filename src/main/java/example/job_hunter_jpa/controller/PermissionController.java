@@ -1,6 +1,7 @@
 package example.job_hunter_jpa.controller;
 
 import example.job_hunter_jpa.dto.PermissionDTO.PermissionDTO;
+import example.job_hunter_jpa.dto.PermissionDTO.PermissionResDTO;
 import example.job_hunter_jpa.entity.Permission;
 import example.job_hunter_jpa.entity.Role;
 import example.job_hunter_jpa.service.PermissionService;
@@ -15,19 +16,19 @@ import java.util.List;
 public class PermissionController {
     private final PermissionService service;
     @GetMapping
-    public List<PermissionDTO> getAll(){
+    public List<PermissionResDTO> getAll(){
         return service.getAll();
     }
     @GetMapping("/{id}")
-    public PermissionDTO getById(@PathVariable Integer id){
+    public PermissionResDTO getById(@PathVariable Integer id){
         return service.getById(id);
     }
     @PostMapping
-    public PermissionDTO create(@RequestBody PermissionDTO permission){
+    public PermissionResDTO create(@RequestBody PermissionDTO permission){
         return service.create(permission);
     }
     @PutMapping("/{id}")
-    public PermissionDTO update(@PathVariable Integer id, @RequestBody PermissionDTO permission){
+    public PermissionResDTO update(@PathVariable Integer id, @RequestBody PermissionDTO permission){
         return service.update(id,permission);
     }
     @DeleteMapping("/{id}")

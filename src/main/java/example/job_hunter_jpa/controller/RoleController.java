@@ -23,11 +23,11 @@ public class RoleController {
         return service.getAll();
     }
     @PostMapping
-    public RoleResDTO create(@RequestBody Role role){
+    public RoleResDTO create(@RequestBody RoleDTO role){
         return service.create(role);
     }
     @PutMapping("/{id}")
-    public RoleResDTO update(@PathVariable Integer id,@RequestBody Role role){
+    public RoleResDTO update(@PathVariable Integer id,@RequestBody RoleDTO role){
         return service.update(id,role);
     }
     @DeleteMapping("/{id}")

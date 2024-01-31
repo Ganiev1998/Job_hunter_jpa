@@ -13,6 +13,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -36,8 +37,13 @@ public class UserServiceimpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserResDTO create(UserDTO users) {
-        return userMapper.toDTO(userRepository.save(userMapper.toENT1(users)));
+//        Users users1 = new Users();
+//        users1.setUserName(users.getUserName());
+//        users1.setPassword(users.getPassword());
+//        users1.setRole(users.getRole());
+        return userMapper.toDTO(userRepository.save(userMapper.toENT(users)));
 
     }
 
@@ -46,7 +52,7 @@ public class UserServiceimpl implements UserService {
         Users user = userRepository.getReferenceById(id);
         user.setUserName(users.getUserName());
         user.setPassword(users.getPassword());
-        user.setRole((users.getRole()));
+        user.setRole(roleMapper.toENT(users.getRole()));
         return userMapper.toDTO(userRepository.save(user));
     }
 
